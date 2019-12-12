@@ -1,0 +1,200 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=windows-1251" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+
+    <title>Помощник для игры Слово за Слово</title>
+    <meta
+      name="description"
+      content="Бесплатный помощник в игре Слово за Слово, поможет найти все слова в таблице 5х5"
+    />
+
+    <meta
+      name="keywords"
+      content="Слово за слово, помощник, помощник слово за слово,слово за слово помощник,слово за слово игра"
+    />
+    <meta
+      name="description"
+      content="Помощник в игре Слово за Слово, поможет найти все слова в таблице 5х5"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="content-type" content="text/html;UTF-8" />
+    <meta http-equiv="content-language" content="ru" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/index.css?v1.28" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/standart.css" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function() {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js",
+        "ym"
+      );
+
+      ym(55186099, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+      });
+    </script>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/55186099"
+          style="position:absolute; left:-9999px;"
+          alt=""
+        />
+      </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/snackbar.js"></script>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="menu">
+        <div id="points">{{points}}</div>
+      </div>
+      <div class="col_container" style="">
+        <div class="col table-col">
+          <div class="input_div">
+            <i class="material-icons" id="refresh">refresh</i>
+            <input
+              v-model="gridLetters"
+              class="input"
+              placeholder="буквы вводить сюда"
+              type="text"
+              name="letter"
+              id="lettersList"
+            />
+
+            <button id="submit">OK</button>
+          </div>
+          <a class="tutorial" href="slovo_za_slovo/">Как играть</a>
+          <div id="table">
+            <div class="letter" data-coords="00">{{gridLetters[0]}}</div>
+            <div class="letter" data-coords="01">{{gridLetters[1]}}</div>
+            <div class="letter" data-coords="02">{{gridLetters[2]}}</div>
+            <div class="letter" data-coords="03">{{gridLetters[3]}}</div>
+            <div class="letter" data-coords="04">{{gridLetters[4]}}</div>
+            <div class="letter" data-coords="10">{{gridLetters[5]}}</div>
+            <div class="letter" data-coords="11">{{gridLetters[6]}}</div>
+            <div class="letter" data-coords="12">{{gridLetters[7]}}</div>
+            <div class="letter" data-coords="13">{{gridLetters[8]}}</div>
+            <div class="letter" data-coords="14">{{gridLetters[9]}}</div>
+            <div class="letter" data-coords="20">{{gridLetters[10]}}</div>
+            <div class="letter" data-coords="21">{{gridLetters[11]}}</div>
+            <div class="letter" data-coords="22">{{gridLetters[12]}}</div>
+            <div class="letter" data-coords="23">{{gridLetters[13]}}</div>
+            <div class="letter" data-coords="24">{{gridLetters[14]}}</div>
+            <div class="letter" data-coords="30">{{gridLetters[15]}}</div>
+            <div class="letter" data-coords="31">{{gridLetters[16]}}</div>
+            <div class="letter" data-coords="32">{{gridLetters[17]}}</div>
+            <div class="letter" data-coords="33">{{gridLetters[18]}}</div>
+            <div class="letter" data-coords="34">{{gridLetters[19]}}</div>
+            <div class="letter" data-coords="40">{{gridLetters[20]}}</div>
+            <div class="letter" data-coords="41">{{gridLetters[21]}}</div>
+            <div class="letter" data-coords="42">{{gridLetters[22]}}</div>
+            <div class="letter" data-coords="43">{{gridLetters[23]}}</div>
+            <div class="letter" data-coords="44">{{gridLetters[24]}}</div>
+          </div>
+          <div id="input" class="input"></div>
+          <div id="pathes"></div>
+        </div>
+
+        <div class="col words-col">
+          <p class="text">
+            <i class="material-icons">list_alt</i>Слова ({{wordsList.length}})
+          </p>
+          <div name="words" id="words">
+            <div class="placeholder">
+              <img
+                src="images/owl.png"
+                alt="Помощник слово за слово"
+                srcset=""
+              />
+            </div>
+            <div
+              class="word"
+              v-for="word in wordsList"
+              data-path="{{word.path}}"
+            >
+              <a
+                name="http://gramota.ru/slovari/dic/?lop=x&amp;bts=x&amp;ro=x&amp;zar=x&amp;ag=x&amp;ab=x&amp;sin=x&amp;lv=x&amp;az=x&amp;pe=x&amp;word={{word.letters}}"
+                >{{word.letters}}</a
+              ><small>{{word.points}}</small>
+            </div>
+          </div>
+        </div>
+        <div class="col ad_col">
+          <div id="yandex_rtb_R-A-480855-1"></div>
+          <script type="text/javascript">
+            (function(w, d, n, s, t) {
+              w[n] = w[n] || [];
+              w[n].push(function() {
+                Ya.Context.AdvManager.render({
+                  blockId: "R-A-480855-1",
+                  renderTo: "yandex_rtb_R-A-480855-1",
+                  async: true
+                });
+              });
+              t = d.getElementsByTagName("script")[0];
+              s = d.createElement("script");
+              s.type = "text/javascript";
+              s.src = "//an.yandex.ru/system/context.js";
+              s.async = true;
+              t.parentNode.insertBefore(s, t);
+            })(this, this.document, "yandexContextAsyncCallbacks");
+          </script>
+        </div>
+      </div>
+
+      <footer>
+        <h1>Помощник в игре Слово за Слово</h1>
+        <span>
+          Контакты для связи
+          <a href="mailto:wsolverru@gmail.com">wsolverru@gmail.com</a></span
+        >
+      </footer>
+    </div>
+  </body>
+  <script src="js/index.js?v1.4"></script>
+</html>

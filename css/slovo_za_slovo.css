@@ -1,0 +1,106 @@
+.main_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main_info button {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 300px;
+}
+
+.main_info button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main_info img {
+  width: 100%;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+.container li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container li .icon {
+  margin-right: 5px;
+}
+
+footer {
+  width: 100%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* background: black; */
+  padding: 10px 0px;
+  font-weight: 500;
+  /* background-color: white; */
+  /* box-shadow: 0 0 2px 1px #dedede; */
+  /* box-shadow: 0 0 black; */
+  background: #fbfbfb;
+  /* border: 1px solid #c1c1c1; */
+  border-left: none;
+  display: flex;
+  -webkit-box-shadow: 0 0 2px 0px #dedede;
+          box-shadow: 0 0 2px 0px #dedede;
+}
+
+.tutorial p {
+  font-weight: 500;
+  /* width: 600px; */
+  height: 48px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  padding-left: 25px;
+  margin-top: 0px;
+  /* padding-top: 0; */
+  background: #fbfbfb;
+  /* border: 1px solid #c1c1c1; */
+  border-left: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 0 2px 0px #dedede;
+          box-shadow: 0 0 2px 0px #dedede;
+}
+
+.tutorial .tutorial_part {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+/*# sourceMappingURL=slovo_za_slovo.css.map */
